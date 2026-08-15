@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Pro Tools | إنشاء وفحص رموز QR احترافية</title>
+    <meta name="description" content="أداة شاملة لإنشاء وفحص رموز QR. دعم لروابط، واي فاي، جهات اتصال، واتساب، وبريد إلكتروني. سريعة وآمنة ومجانية.">
+    <meta name="keywords" content="QR Code, مولد QR, فاحص QR, إنشاء رمز, واي فاي, في كارد, واتساب, رابط, أداة مجانية">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta for RTL/LTR direction -->
+    <meta name="language" content="ar">
+    <meta name="direction" content="rtl">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="QR Pro Tools - الماسح الضوئي ومنشئ الرموز">
+    <meta property="og:description" content="أداة متكاملة لإنشاء وفحص رموز QR بسهولة تامة.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="canonical" href="https://qrprotools.com/">
+    <link rel="alternate" href="https://qrprotools.com/en" hreflang="en">
+    <link rel="alternate" href="https://qrprotools.com/" hreflang="ar">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+
+    <style>
+        /* ===== CSS VARIABLES & RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --primary-light: #818cf8;
+            --secondary: #64748b;
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.08);
+            --header-height: 60px;
+            --transition: 0.25s ease;
+            --font-size-base: 16px;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: var(--font-size-base);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding-top: var(--header-height);
+            min-height: 100vh;
+            line-height: 1.8;
+            font-size: 1rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== HEADER / NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--surface);
+            padding: 0 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            gap: 8px;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+        .brand i {
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            background: var(--bg);
+            padding: 4px;
+            border-radius: var(--radius);
+            flex-wrap: nowrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            transition: var(--transition);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .nav-btn:hover {
+            color: var(--text);
+        }
+        .nav-btn.active-nav {
+            background: var(--surface);
+            color: var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .icon-btn {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .icon-btn:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 720px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            display: none;
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: fadeUp 0.4s ease;
+        }
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* ===== FORMS ===== */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            display: block;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            transition: var(--transition);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--surface);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            width: 100%;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: rgba(79, 70, 229, 0.06);
+        }
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        .btn-sm {
+            width: auto;
+            padding: 6px 18px;
+            font-size: 0.85rem;
+        }
+        .btn-copy {
+            background: var(--secondary);
+            color: white;
+            width: auto;
+            padding: 6px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        .btn-copy:hover {
+            background: var(--text);
+        }
+
+        /* ===== SCANNER ===== */
+        #reader {
+            width: 100%;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #000;
+            min-height: 220px;
+            position: relative;
+        }
+        #reader video {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        #decodeResult {
+            background: var(--bg);
+            padding: 14px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            min-height: 55px;
+            border-right: 4px solid var(--primary);
+            font-family: 'Cairo', monospace;
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .file-upload-wrapper {
+            border: 2px dashed var(--border);
+            padding: 16px;
+            text-align: center;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--bg);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .file-upload-wrapper:hover {
+            border-color: var(--primary);
+            background: var(--surface);
+        }
+
+        /* ===== GENERATOR ===== */
+        #qrcode {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            min-height: 180px;
+            align-items: center;
+        }
+        #qrcode img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .color-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: var(--bg);
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 100px;
+        }
+        input[type="color"] {
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            background: none;
+            min-width: 38px;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 50%;
+        }
+
+        /* ===== HOW-TO SECTION ===== */
+        .how-to-section {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 1.5rem auto;
+            max-width: 720px;
+        }
+        .how-to-section ul, .how-to-section ol {
+            padding-right: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .how-to-section li {
+            margin-bottom: 6px;
+        }
+        .how-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* ===== SOCIAL MEDIA FOOTER ===== */
+        .social-footer {
+            max-width: 720px;
+            margin: 1rem auto 0.5rem;
+            padding: 1rem 1.2rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .social-footer .social-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .social-icon.facebook { background: #1877f2; }
+        .social-icon.twitter { background: #000000; }
+        .social-icon.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-icon.youtube { background: #ff0000; }
+        .social-icon.linkedin { background: #0a66c2; }
+        .social-icon.tiktok { background: #000000; }
+        .social-icon.github { background: #181717; }
+        .social-icon.whatsapp { background: #25D366; }
+        .social-icon.telegram { background: #0088cc; }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon.facebook:hover { box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4); }
+        .social-icon.twitter:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .social-icon.instagram:hover { box-shadow: 0 8px 25px rgba(225, 48, 108, 0.4); }
+        .social-icon.youtube:hover { box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4); }
+        .social-icon.linkedin:hover { box-shadow: 0 8px 25px rgba(10, 102, 194, 0.4); }
+        .social-icon.tiktok:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .social-icon.github:hover { box-shadow: 0 8px 25px rgba(24, 23, 23, 0.4); }
+        .social-icon.whatsapp:hover { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+        .social-icon.telegram:hover { box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4); }
+
+        .social-icon::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: var(--text);
+            color: var(--bg);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
+            pointer-events: none;
+        }
+
+        .social-icon:hover::after {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+        }
+
+        /* ===== FOOTER LINKS ===== */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 0.5rem auto 0.5rem;
+            padding: 1.2rem;
+            max-width: 720px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-copy {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 0.5rem 0 1.5rem;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* ===== COOKIE BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            color: var(--text);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 9999;
+            border-top: 3px solid var(--primary);
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cookie-banner p {
+            margin: 0;
+            flex: 1;
+            font-size: 0.9rem;
+            min-width: 200px;
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+        }
+        .cookie-banner .btn-sm {
+            width: auto;
+            padding: 8px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .cookie-banner .btn-primary-sm {
+            background: var(--primary);
+            color: white;
+        }
+        .cookie-banner .btn-primary-sm:hover {
+            background: var(--primary-dark);
+        }
+        .cookie-banner .btn-outline-sm {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .cookie-banner .btn-outline-sm:hover {
+            background: rgba(79, 70, 229, 0.06);
+        }
+        .cookie-banner .cookie-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== BACK TO TOP ===== */
+        #backToTop {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #backToTop:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            font-family: 'Cairo', sans-serif;
+        }
+        .toast.show {
+            opacity: 1;
+            bottom: 40px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        .text-center { text-align: center; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            :root { --font-size-base: 15px; }
+            .navbar {
+                padding: 0 0.8rem;
+                height: 56px;
+                gap: 6px;
+            }
+            .brand { font-size: 0.95rem; }
+            .brand i { font-size: 1.1rem; }
+            .nav-btn { padding: 5px 10px; font-size: 0.75rem; }
+            .nav-links { gap: 3px; padding: 3px; }
+            .icon-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+            .section { padding: 1.2rem; }
+            .how-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .footer-links {
+                gap: 0.8rem;
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .social-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .social-icons { gap: 8px; }
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 0.8rem 1rem;
+            }
+            .cookie-banner .cookie-actions { width: 100%; }
+            .cookie-banner .btn-sm { width: 100%; }
+            #backToTop {
+                bottom: 80px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            h3 { font-size: 1.05rem; }
+            .color-row { flex-direction: column; align-items: stretch; }
+        }
+
+        @media (max-width: 480px) {
+            :root { --font-size-base: 14px; }
+            .nav-btn { padding: 4px 8px; font-size: 0.7rem; }
+            .brand { font-size: 0.85rem; }
+            .brand i { font-size: 1rem; }
+            .icon-btn { width: 28px; height: 28px; font-size: 0.7rem; }
+            .section { padding: 1rem; }
+            input, select, textarea { padding: 8px 12px; font-size: 0.9rem; }
+            .btn { padding: 8px 16px; font-size: 0.85rem; }
+            #qrcode { min-height: 140px; padding: 12px; }
+            .social-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 0.85rem;
+            }
+            .social-icons { gap: 6px; }
+            .social-icon::after { display: none; }
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="navbar">
+    <a href="index.html" class="brand">
+        <i class="fa-solid fa-qrcode"></i>
+        <span>QR Pro</span>
+    </a>
+    
+    <nav class="nav-links">
+        <button onclick="nav('home')" class="nav-btn active-nav" data-i18n="nav_home">الرئيسية</button>
+        <button onclick="nav('decoder')" class="nav-btn" data-i18n="nav_decode">فحص</button>
+        <button onclick="nav('generator')" class="nav-btn" data-i18n="nav_generate">إنشاء</button>
+    </nav>
+
+    <div class="nav-controls">
+        <button onclick="toggleTheme()" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button onclick="toggleLang()" class="icon-btn" id="langToggle" aria-label="تبديل اللغة">EN</button>
+    </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<div class="container">
+
+    <!-- HOME -->
+    <section id="home" class="section active">
+        <div class="text-center" style="padding: 10px 0;">
+            <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 3rem; color: var(--primary); margin-bottom: 12px;"></i>
+            <h1 data-i18n="home_head">أدوات QR الاحترافية</h1>
+            <p data-i18n="home_desc">منصة متكاملة وسريعة لإنشاء وفحص رموز QR للروابط، الشبكات، جهات الاتصال والمزيد بكل سهولة.</p>
+            <div class="grid-2" style="margin-top: 1.2rem;">
+                <button class="btn btn-primary" onclick="nav('generator')">
+                    <i class="fa-solid fa-plus"></i> <span data-i18n="btn_start_gen">إنشاء رمز</span>
+                </button>
+                <button class="btn btn-outline" onclick="nav('decoder')">
+                    <i class="fa-solid fa-camera"></i> <span data-i18n="nav_decode">فحص رمز</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DECODER -->
+    <section id="decoder" class="section">
+        <h2><i class="fa-solid fa-expand"></i> <span data-i18n="nav_decode">الفاحص الذكي</span></h2>
+        <div id="reader"></div>
+        <div class="grid-2" style="margin-top: 14px;">
+            <button id="camBtn" class="btn btn-primary" onclick="toggleCamera()">
+                <i class="fa-solid fa-video"></i> <span data-i18n="btn_start_cam">تشغيل الكاميرا</span>
+            </button>
+            <div class="file-upload-wrapper" onclick="document.getElementById('qr-file').click()">
+                <input type="file" id="qr-file" accept="image/*" class="hidden">
+                <i class="fa-solid fa-image" style="font-size: 1.8rem; color: var(--secondary);"></i>
+                <div style="font-size: 0.85rem; margin-top: 4px;" data-i18n="or_file">اختر صورة</div>
+            </div>
+        </div>
+        <h3 style="margin-top: 1.2rem;" data-i18n="result">النتيجة:</h3>
+        <div>
+            <div id="decodeResult" data-i18n="waiting_scan">بانتظار الفحص...</div>
+            <button class="btn-copy hidden" id="copyResultBtn" onclick="copyResult()">
+                <i class="fa-regular fa-copy"></i> <span data-i18n="copy_btn">نسخ</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- GENERATOR -->
+    <section id="generator" class="section">
+        <h2><i class="fa-solid fa-qrcode"></i> <span data-i18n="nav_generate">منشئ الرموز</span></h2>
+
+        <div class="form-group">
+            <label data-i18n="type_label">نوع الرمز:</label>
+            <select id="qrType" onchange="updateGenUI()">
+                <option value="url" data-i18n="opt_url">🔗 رابط / URL</option>
+                <option value="text" data-i18n="opt_text">📝 نص / Text</option>
+                <option value="wifi" data-i18n="opt_wifi">📶 واي فاي / Wi-Fi</option>
+                <option value="vcard" data-i18n="opt_vcard">👤 جهة اتصال / Contact</option>
+                <option value="whatsapp" data-i18n="opt_wa">💬 واتساب / WhatsApp</option>
+                <option value="email" data-i18n="opt_email">✉️ بريد إلكتروني / Email</option>
+            </select>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 16px 0;">
+
+        <!-- Simple -->
+        <div id="simpleBox" class="form-group">
+            <label data-i18n="lbl_content">المحتوى:</label>
+            <input id="qrInput" placeholder="https://example.com">
+        </div>
+
+        <!-- WiFi -->
+        <div id="wifiBox" class="hidden">
+            <div class="form-group">
+                <label data-i18n="lbl_ssid">اسم الشبكة (SSID)</label>
+                <input id="ssid" placeholder="Network Name">
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label data-i18n="lbl_password">كلمة المرور</label>
+                    <input id="pass" placeholder="***" type="password">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="lbl_encryption">نوع التشفير</label>
+                    <select id="encryption">
+                        <option value="WPA">WPA/WPA2</option>
+                        <option value="WEP">WEP</option>
+                        <option value="nopass" data-i18n="opt_open">مفتوحة</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- VCard -->
+        <div id="vcardBox" class="hidden">
+            <div class="grid-2">
+                <input id="vcFirst" placeholder="الاسم الأول" data-ph="ph_fname">
+                <input id="vcLast" placeholder="اسم العائلة" data-ph="ph_lname">
+            </div>
+            <div class="form-group"><input id="vcOrg" placeholder="الشركة" data-ph="ph_company"></div>
+            <div class="grid-2">
+                <input id="vcPhone" placeholder="الجوال" type="tel" data-ph="ph_phone">
+                <input id="vcEmail" placeholder="البريد الإلكتروني" type="email" data-ph="ph_email">
+            </div>
+            <div class="form-group"><input id="vcSite" placeholder="الموقع الإلكتروني" data-ph="ph_site"></div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div id="whatsappBox" class="hidden">
+            <div class="form-group">
+                <label data-i18n="lbl_wa_num">رقم الهاتف (مع رمز الدولة):</label>
+                <input id="waPhone" placeholder="96650xxxxxxx" type="number" style="direction: ltr;">
+            </div>
+            <div class="form-group">
+                <label data-i18n="lbl_wa_msg">الرسالة:</label>
+                <textarea id="waMsg" placeholder="Hello!"></textarea>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div id="emailBox" class="hidden">
+            <div class="form-group">
+                <input id="emAddress" placeholder="to@example.com" type="email">
+            </div>
+            <div class="form-group">
+                <input id="emSubject" placeholder="الموضوع" data-ph="ph_subject">
+            </div>
+            <div class="form-group">
+                <textarea id="emBody" placeholder="نص الرسالة..." data-ph="ph_msg"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-i18n="lbl_colors">تخصيص الألوان:</label>
+            <div class="color-row">
+                <div class="color-item">
+                    <input type="color" id="colorDark" value="#1e293b">
+                    <span data-i18n="col_fg">لون الرمز</span>
+                </div>
+                <div class="color-item">
+                    <input type="color" id="colorLight" value="#ffffff">
+                    <span data-i18n="col_bg">لون الخلفية</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="generateQR()">
+            <i class="fa-solid fa-wand-magic"></i> <span data-i18n="btn_create">إنشاء الرمز</span>
+        </button>
+        
+        <div id="qrcode">
+            <span style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="qr_placeholder">سيظهر الرمز هنا</span>
+        </div>
+        
+        <button id="downloadBtn" class="btn btn-outline hidden" onclick="downloadQR()">
+            <i class="fa-solid fa-download"></i> <span data-i18n="btn_download">تحميل PNG</span>
+        </button>
+    </section>
+</div>
+
+<!-- ===== HOW-TO GUIDE ===== -->
+<div class="how-to-section" id="howToGuide">
+    <h2><i class="fa-regular fa-circle-question" style="color: var(--primary);"></i> <span data-i18n="guide_title">دليل الاستخدام</span></h2>
+    <p data-i18n="guide_desc">تعرف على كيفية استخدام جميع ميزات المنصة:</p>
+    <div class="how-grid">
+        <div>
+            <h3 style="color: var(--primary); font-size: 1.05rem;">🔍 <span data-i18n="guide_scan_title">فحص الرموز</span></h3>
+            <ul>
+                <li data-i18n="guide_scan_1">اضغط <strong>"تشغيل الكاميرا"</strong> لمسح أي رمز QR مباشرة</li>
+                <li data-i18n="guide_scan_2">أو اختر <strong>"اختر صورة"</strong> لرفع صورة من جهازك</li>
+                <li data-i18n="guide_scan_3">انسخ النتيجة بنقرة واحدة</li>
+            </ul>
+        </div>
+        <div>
+            <h3 style="color: var(--primary); font-size: 1.05rem;">✨ <span data-i18n="guide_gen_title">إنشاء الرموز</span></h3>
+            <ul>
+                <li data-i18n="guide_gen_1">اختر نوع الرمز من القائمة</li>
+                <li data-i18n="guide_gen_2">املأ البيانات المطلوبة</li>
+                <li data-i18n="guide_gen_3">خصّص الألوان ثم اضغط <strong>"إنشاء"</strong></li>
+                <li data-i18n="guide_gen_4">حمّل الصورة بصيغة PNG</li>
+            </ul>
+        </div>
+    </div>
+    <div style="margin-top: 1rem; background: var(--bg); padding: 0.8rem 1.2rem; border-radius: var(--radius);">
+        <p style="margin: 0; font-weight: 700;" data-i18n="guide_tip">💡 نصيحة: استخدم الوضع المظلم 🌙 لتجربة مريحة للعين.</p>
+    </div>
+</div>
+
+<!-- ===== SOCIAL MEDIA FOOTER ===== -->
+<div class="social-footer">
+    <span class="social-label" data-i18n="social_follow"><i class="fa-regular fa-share-nodes"></i> تابعنا على وسائل التواصل</span>
+    <div class="social-icons" id="socialIcons">
+        <!-- سيتم إنشاء الأيقونات بواسطة JavaScript -->
+    </div>
+</div>
+
+<!-- ===== FOOTER LINKS ===== -->
+<div class="footer-links">
+    <a href="about.html"><i class="fa-regular fa-address-card"></i> <span data-i18n="footer_about">من نحن</span></a>
+    <a href="contact.html"><i class="fa-regular fa-envelope"></i> <span data-i18n="footer_contact">اتصل بنا</span></a>
+    <a href="privacy.html"><i class="fa-regular fa-file-lines"></i> <span data-i18n="footer_privacy">سياسة الخصوصية</span></a>
+    <a href="terms.html"><i class="fa-regular fa-file-contract"></i> <span data-i18n="footer_terms">سياسة الاستخدام</span></a>
+    <a href="sitemap.xml"><i class="fa-regular fa-sitemap"></i> <span data-i18n="footer_sitemap">خريطة الموقع</span></a>
+</div>
+<div class="footer-copy">
+    <small data-i18n="footer_copy">© 2026 QR Pro Tools | تصميم وتطوير IMAD LIMRANI</small>
+</div>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div id="cookieBanner" class="cookie-banner" style="display: none;">
+    <p>
+        <span data-i18n="cookie_text">🍪 نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك. باستخدامك للموقع، فإنك توافق على</span>
+        <a href="privacy.html" style="color: var(--primary); font-weight: 700;" data-i18n="cookie_link">سياسة الخصوصية</a>.
+    </p>
+    <div class="cookie-actions">
+        <button class="btn-sm btn-primary-sm" onclick="acceptCookies()" data-i18n="cookie_accept">قبول</button>
+        <button class="btn-sm btn-outline-sm" onclick="rejectCookies()" data-i18n="cookie_reject">رفض</button>
+    </div>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ===== TOAST ===== -->
+<div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">تم!</span>
+</div>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+    // ============================================================
+    // SOCIAL MEDIA ICONS - Generated by JavaScript
+    // ============================================================
+    const socialLinks = [
+        { name_ar: 'فيسبوك', name_en: 'Facebook', icon: 'fa-facebook-f', url: 'https://www.facebook.com/qrprotools', class: 'facebook' },
+        { name_ar: 'تويتر', name_en: 'Twitter', icon: 'fa-twitter', url: 'https://www.twitter.com/qrprotools', class: 'twitter' },
+        { name_ar: 'انستغرام', name_en: 'Instagram', icon: 'fa-instagram', url: 'https://www.instagram.com/qrprotools', class: 'instagram' },
+        { name_ar: 'يوتيوب', name_en: 'YouTube', icon: 'fa-youtube', url: 'https://www.youtube.com/@qrprotools', class: 'youtube' },
+        { name_ar: 'لينكد إن', name_en: 'LinkedIn', icon: 'fa-linkedin-in', url: 'https://www.linkedin.com/company/qrprotools', class: 'linkedin' },
+        { name_ar: 'تيك توك', name_en: 'TikTok', icon: 'fa-tiktok', url: 'https://www.tiktok.com/@qrprotools', class: 'tiktok' },
+        { name_ar: 'جيت هاب', name_en: 'GitHub', icon: 'fa-github', url: 'https://github.com/qrprotools', class: 'github' },
+        { name_ar: 'واتساب', name_en: 'WhatsApp', icon: 'fa-whatsapp', url: 'https://wa.me/212640059730', class: 'whatsapp' },
+        { name_ar: 'تيليجرام', name_en: 'Telegram', icon: 'fa-telegram', url: 'https://t.me/+212640059730', class: 'telegram' }
+    ];
+
+    let currentLang = "ar";
+
+    function renderSocialIcons() {
+        const container = document.getElementById('socialIcons');
+        if (!container) return;
+
+        // Clear existing icons
+        container.innerHTML = '';
+
+        socialLinks.forEach(social => {
+            const link = document.createElement('a');
+            link.href = social.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.className = `social-icon ${social.class}`;
+            const tooltip = currentLang === 'ar' ? social.name_ar : social.name_en;
+            link.setAttribute('aria-label', tooltip);
+            link.setAttribute('data-tooltip', tooltip);
+
+            const icon = document.createElement('i');
+            icon.className = `fa-brands ${social.icon}`;
+            
+            link.appendChild(icon);
+            container.appendChild(link);
+        });
+    }
+
+    // ============================================================
+    // TRANSLATIONS - Complete
+    // ============================================================
+    const translations = {
+        ar: {
+            // Navigation
+            nav_home: "الرئيسية",
+            nav_decode: "فحص",
+            nav_generate: "إنشاء",
+            
+            // Home
+            home_head: "أدوات QR الاحترافية",
+            home_desc: "منصة متكاملة وسريعة لإنشاء وفحص رموز QR للروابط، الشبكات، جهات الاتصال والمزيد بكل سهولة.",
+            btn_start_gen: "إنشاء رمز",
+            
+            // Scanner
+            btn_start_cam: "تشغيل الكاميرا",
+            btn_stop_cam: "إيقاف",
+            or_file: "اختر صورة",
+            result: "النتيجة:",
+            waiting_scan: "بانتظار الفحص...",
+            copy_btn: "نسخ",
+            copied: "تم نسخ النص!",
+            err_cam: "تعذر الوصول للكاميرا",
+            
+            // Generator
+            type_label: "نوع الرمز:",
+            opt_url: "🔗 رابط / URL",
+            opt_text: "📝 نص / Text",
+            opt_wifi: "📶 واي فاي / Wi-Fi",
+            opt_vcard: "👤 جهة اتصال / VCard",
+            opt_wa: "💬 واتساب / WhatsApp",
+            opt_email: "✉️ بريد إلكتروني / Email",
+            lbl_content: "المحتوى:",
+            lbl_colors: "تخصيص الألوان:",
+            col_fg: "لون الرمز",
+            col_bg: "لون الخلفية",
+            btn_create: "إنشاء الرمز",
+            btn_download: "تحميل PNG",
+            qr_placeholder: "سيظهر الرمز هنا",
+            err_no_data: "الرجاء إدخال البيانات!",
+            
+            // WiFi
+            lbl_ssid: "اسم الشبكة (SSID)",
+            lbl_password: "كلمة المرور",
+            lbl_encryption: "نوع التشفير",
+            opt_open: "مفتوحة",
+            
+            // WhatsApp
+            lbl_wa_num: "رقم الهاتف (مع رمز الدولة):",
+            lbl_wa_msg: "الرسالة:",
+            
+            // Placeholders
+            ph_fname: "الاسم الأول",
+            ph_lname: "اسم العائلة",
+            ph_company: "الشركة",
+            ph_phone: "الجوال",
+            ph_email: "البريد الإلكتروني",
+            ph_site: "الموقع الإلكتروني",
+            ph_subject: "الموضوع",
+            ph_msg: "نص الرسالة",
+            
+            // Guide
+            guide_title: "دليل الاستخدام",
+            guide_desc: "تعرف على كيفية استخدام جميع ميزات المنصة:",
+            guide_scan_title: "فحص الرموز",
+            guide_scan_1: 'اضغط <strong>"تشغيل الكاميرا"</strong> لمسح أي رمز QR مباشرة',
+            guide_scan_2: 'أو اختر <strong>"اختر صورة"</strong> لرفع صورة من جهازك',
+            guide_scan_3: "انسخ النتيجة بنقرة واحدة",
+            guide_gen_title: "إنشاء الرموز",
+            guide_gen_1: "اختر نوع الرمز من القائمة",
+            guide_gen_2: "املأ البيانات المطلوبة",
+            guide_gen_3: 'خصّص الألوان ثم اضغط <strong>"إنشاء"</strong>',
+            guide_gen_4: "حمّل الصورة بصيغة PNG",
+            guide_tip: "💡 نصيحة: استخدم الوضع المظلم 🌙 لتجربة مريحة للعين.",
+            
+            // Footer
+            footer_about: "من نحن",
+            footer_contact: "اتصل بنا",
+            footer_privacy: "سياسة الخصوصية",
+            footer_terms: "سياسة الاستخدام",
+            footer_sitemap: "خريطة الموقع",
+            footer_copy: "© 2026 QR Pro Tools | تصميم وتطوير IMAD LIMRANI",
+            
+            // Social
+            social_follow: "تابعنا على وسائل التواصل",
+            
+            // Cookie
+            cookie_text: "🍪 نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك. باستخدامك للموقع، فإنك توافق على",
+            cookie_link: "سياسة الخصوصية",
+            cookie_accept: "قبول",
+            cookie_reject: "رفض"
+        },
+        en: {
+            // Navigation
+            nav_home: "Home",
+            nav_decode: "Scan",
+            nav_generate: "Create",
+            
+            // Home
+            home_head: "QR Pro Tools",
+            home_desc: "Professional QR generator and scanner for links, WiFi, contacts and more.",
+            btn_start_gen: "Create QR",
+            
+            // Scanner
+            btn_start_cam: "Start Camera",
+            btn_stop_cam: "Stop",
+            or_file: "Upload Image",
+            result: "Result:",
+            waiting_scan: "Waiting for scan...",
+            copy_btn: "Copy",
+            copied: "Copied!",
+            err_cam: "Camera access failed",
+            
+            // Generator
+            type_label: "QR Type:",
+            opt_url: "🔗 URL Link",
+            opt_text: "📝 Plain Text",
+            opt_wifi: "📶 Wi-Fi Network",
+            opt_vcard: "👤 Contact (VCard)",
+            opt_wa: "💬 WhatsApp",
+            opt_email: "✉️ Email",
+            lbl_content: "Content:",
+            lbl_colors: "Colors:",
+            col_fg: "Foreground",
+            col_bg: "Background",
+            btn_create: "Generate QR",
+            btn_download: "Download PNG",
+            qr_placeholder: "QR Code appears here",
+            err_no_data: "Please enter data!",
+            
+            // WiFi
+            lbl_ssid: "Network Name (SSID)",
+            lbl_password: "Password",
+            lbl_encryption: "Encryption",
+            opt_open: "Open",
+            
+            // WhatsApp
+            lbl_wa_num: "Phone (with country code):",
+            lbl_wa_msg: "Message:",
+            
+            // Placeholders
+            ph_fname: "First Name",
+            ph_lname: "Last Name",
+            ph_company: "Company",
+            ph_phone: "Phone",
+            ph_email: "Email",
+            ph_site: "Website",
+            ph_subject: "Subject",
+            ph_msg: "Message Content",
+            
+            // Guide
+            guide_title: "How to Use",
+            guide_desc: "Learn how to use all platform features:",
+            guide_scan_title: "Scan Codes",
+            guide_scan_1: 'Press <strong>"Start Camera"</strong> to scan any QR code',
+            guide_scan_2: 'Or choose <strong>"Upload Image"</strong> to scan from your device',
+            guide_scan_3: "Copy the result with one click",
+            guide_gen_title: "Generate Codes",
+            guide_gen_1: "Select the QR type from the list",
+            guide_gen_2: "Fill in the required data",
+            guide_gen_3: 'Customize colors then press <strong>"Generate"</strong>',
+            guide_gen_4: "Download as PNG image",
+            guide_tip: "💡 Tip: Use Dark Mode 🌙 for comfortable viewing.",
+            
+            // Footer
+            footer_about: "About Us",
+            footer_contact: "Contact Us",
+            footer_privacy: "Privacy Policy",
+            footer_terms: "Terms of Use",
+            footer_sitemap: "Sitemap",
+            footer_copy: "© 2026 QR Pro Tools | Designed & Developed by IMAD LIMRANI",
+            
+            // Social
+            social_follow: "Follow us on social media",
+            
+            // Cookie
+            cookie_text: "🍪 We use cookies to improve your experience. By using our site, you agree to our",
+            cookie_link: "Privacy Policy",
+            cookie_accept: "Accept",
+            cookie_reject: "Reject"
+        }
+    };
+
+    // ============================================================
+    // NAVIGATION
+    // ============================================================
+    function nav(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active-nav'));
+        const btn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick')?.includes(id));
+        if (btn) btn.classList.add('active-nav');
+
+        if (id !== 'decoder') stopCamera();
+    }
+
+    // ============================================================
+    // TOAST
+    // ============================================================
+    function showToast(msg, type = 'success') {
+        const t = document.getElementById('toast');
+        const tm = document.getElementById('toastMsg');
+        t.style.background = type === 'error' ? '#ef4444' : '#1e293b';
+        tm.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(t._timeout);
+        t._timeout = setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ============================================================
+    // THEME
+    // ============================================================
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+        const icon = document.querySelector('#themeToggle i');
+        if (document.body.classList.contains('dark')) {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    }
+
+    function loadTheme() {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+        }
+        updateThemeIcon();
+    }
+
+    // ============================================================
+    // LANGUAGE - Complete Translation
+    // ============================================================
+    function toggleLang() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        document.getElementById('langToggle').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+
+        // Update meta direction
+        const directionMeta = document.querySelector('meta[name="direction"]');
+        if (directionMeta) {
+            directionMeta.content = currentLang === 'ar' ? 'rtl' : 'ltr';
+        }
+        const languageMeta = document.querySelector('meta[name="language"]');
+        if (languageMeta) {
+            languageMeta.content = currentLang === 'ar' ? 'ar' : 'en';
+        }
+
+        // Update Open Graph locale
+        const ogLocale = document.querySelector('meta[property="og:locale"]');
+        if (ogLocale) {
+            ogLocale.content = currentLang === 'ar' ? 'ar_AR' : 'en_US';
+        }
+
+        // Translate all elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                // If element contains HTML tags, use innerHTML
+                if (el.querySelector('strong') || el.querySelector('span') || el.querySelector('i')) {
+                    el.innerHTML = translations[currentLang][key];
+                } else {
+                    el.textContent = translations[currentLang][key];
+                }
+            }
+        });
+
+        // Translate placeholders
+        document.querySelectorAll('[data-ph]').forEach(el => {
+            const key = el.getAttribute('data-ph');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                el.placeholder = translations[currentLang][key];
+            }
+        });
+
+        // Update social icons tooltips
+        updateSocialTooltips();
+
+        // Update generator UI
+        updateGenUI();
+    }
+
+    function updateSocialTooltips() {
+        const icons = document.querySelectorAll('.social-icon');
+        icons.forEach((icon, index) => {
+            if (socialLinks[index]) {
+                const tooltip = currentLang === 'ar' ? socialLinks[index].name_ar : socialLinks[index].name_en;
+                icon.setAttribute('data-tooltip', tooltip);
+                icon.setAttribute('aria-label', tooltip);
+            }
+        });
+    }
+
+    // ============================================================
+    // GENERATOR
+    // ============================================================
+    function updateGenUI() {
+        const type = document.getElementById('qrType').value;
+        const boxes = ['simpleBox', 'wifiBox', 'vcardBox', 'whatsappBox', 'emailBox'];
+        boxes.forEach(id => document.getElementById(id).classList.add('hidden'));
+
+        if (type === 'wifi') document.getElementById('wifiBox').classList.remove('hidden');
+        else if (type === 'vcard') document.getElementById('vcardBox').classList.remove('hidden');
+        else if (type === 'whatsapp') document.getElementById('whatsappBox').classList.remove('hidden');
+        else if (type === 'email') document.getElementById('emailBox').classList.remove('hidden');
+        else document.getElementById('simpleBox').classList.remove('hidden');
+
+        document.getElementById('downloadBtn').classList.add('hidden');
+        document.getElementById('qrcode').innerHTML = `<span style="color:var(--text-muted);font-size:0.95rem;">${translations[currentLang].qr_placeholder}</span>`;
+    }
+
+    function generateQR() {
+        const qrBox = document.getElementById('qrcode');
+        const type = document.getElementById('qrType').value;
+        const colorDark = document.getElementById('colorDark').value;
+        const colorLight = document.getElementById('colorLight').value;
+        let data = '';
+
+        if (type === 'wifi') {
+            const ssid = document.getElementById('ssid').value;
+            const pass = document.getElementById('pass').value;
+            const enc = document.getElementById('encryption').value;
+            if (!ssid) return showToast(translations[currentLang].err_no_data, 'error');
+            data = `WIFI:T:${enc};S:${ssid};P:${pass};;`;
+        } 
+        else if (type === 'vcard') {
+            const f = document.getElementById('vcFirst').value;
+            const l = document.getElementById('vcLast').value;
+            const org = document.getElementById('vcOrg').value;
+            const tel = document.getElementById('vcPhone').value;
+            const mail = document.getElementById('vcEmail').value;
+            const url = document.getElementById('vcSite').value;
+            if (!f && !l && !tel) return showToast(translations[currentLang].err_no_data, 'error');
+            data = `BEGIN:VCARD\nVERSION:3.0\nN:${l};${f};;;\nFN:${f} ${l}\nORG:${org}\nTEL;TYPE=CELL:${tel}\nEMAIL:${mail}\nURL:${url}\nEND:VCARD`;
+        }
+        else if (type === 'whatsapp') {
+            const num = document.getElementById('waPhone').value;
+            const msg = document.getElementById('waMsg').value;
+            if (!num) return showToast(translations[currentLang].err_no_data, 'error');
+            data = `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+        }
+        else if (type === 'email') {
+            const to = document.getElementById('emAddress').value;
+            const sub = document.getElementById('emSubject').value;
+            const body = document.getElementById('emBody').value;
+            data = `mailto:${to}?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
+        }
+        else {
+            data = document.getElementById('qrInput').value;
+            if (!data) return showToast(translations[currentLang].err_no_data, 'error');
+        }
+
+        qrBox.innerHTML = '';
+        try {
+            new QRCode(qrBox, {
+                text: data,
+                width: 240,
+                height: 240,
+                colorDark: colorDark,
+                colorLight: colorLight,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            setTimeout(() => document.getElementById('downloadBtn').classList.remove('hidden'), 100);
+        } catch(e) {
+            showToast('خطأ في إنشاء الرمز', 'error');
+        }
+    }
+
+    function downloadQR() {
+        const qrImg = document.querySelector('#qrcode img');
+        if (qrImg) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const padding = 20;
+            canvas.width = qrImg.naturalWidth + padding * 2;
+            canvas.height = qrImg.naturalHeight + padding * 2;
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(qrImg, padding, padding);
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = `QR-${Date.now()}.png`;
+            link.click();
+        }
+    }
+
+    // ============================================================
+    // DECODER
+    // ============================================================
+    let html5QrCode = null;
+    const resultBox = document.getElementById('decodeResult');
+
+    async function toggleCamera() {
+        if (!html5QrCode) html5QrCode = new Html5Qrcode('reader');
+        if (html5QrCode.isScanning) { stopCamera(); return; }
+
+        const camBtn = document.getElementById('camBtn');
+        try {
+            await html5QrCode.start(
+                { facingMode: 'environment' },
+                { fps: 10, qrbox: { width: 240, height: 240 } },
+                (text) => { handleScanSuccess(text); stopCamera(); },
+                () => {}
+            );
+            html5QrCode.isScanning = true;
+            camBtn.innerHTML = `<i class="fa-solid fa-stop"></i> ${translations[currentLang].btn_stop_cam}`;
+            camBtn.className = 'btn btn-danger';
+            resultBox.textContent = translations[currentLang].waiting_scan;
+        } catch (err) {
+            showToast(translations[currentLang].err_cam, 'error');
+        }
+    }
+
+    function stopCamera() {
+        if (html5QrCode && html5QrCode.isScanning) {
+            html5QrCode.stop().then(() => {
+                html5QrCode.isScanning = false;
+                resetCamBtn();
+            }).catch(() => {});
+        }
+    }
+
+    function resetCamBtn() {
+        const camBtn = document.getElementById('camBtn');
+        camBtn.innerHTML = `<i class="fa-solid fa-video"></i> ${translations[currentLang].btn_start_cam}`;
+        camBtn.className = 'btn btn-primary';
+    }
+
+    function handleScanSuccess(text) {
+        resultBox.textContent = text;
+        document.getElementById('copyResultBtn').classList.remove('hidden');
+        showToast('تم اكتشاف رمز QR!');
+        if (navigator.vibrate) navigator.vibrate(200);
+    }
+
+    function copyResult() {
+        navigator.clipboard.writeText(resultBox.textContent).then(() => {
+            showToast(translations[currentLang].copied);
+        });
+    }
+
+    document.getElementById('qr-file').addEventListener('change', function(e) {
+        if (this.files.length === 0) return;
+        if (html5QrCode && html5QrCode.isScanning) {
+            html5QrCode.stop().then(() => scanFile(this.files[0]));
+        } else {
+            scanFile(this.files[0]);
+        }
+        this.value = '';
+    });
+
+    function scanFile(file) {
+        const scanner = new Html5Qrcode('reader');
+        scanner.scanFile(file, true)
+            .then(txt => { handleScanSuccess(txt); scanner.clear(); })
+            .catch(() => { showToast('لم يتم العثور على رمز QR في الصورة', 'error'); scanner.clear(); });
+    }
+
+    // ============================================================
+    // COOKIES
+    // ============================================================
+    function initCookies() {
+        const consent = localStorage.getItem('cookieConsent');
+        if (!consent) {
+            document.getElementById('cookieBanner').style.display = 'flex';
+        }
+    }
+
+    function acceptCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookieBanner').style.display = 'none';
+        showToast('✅ تم قبول الكوكيز!');
+    }
+
+    function rejectCookies() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        document.getElementById('cookieBanner').style.display = 'none';
+        showToast('❌ تم رفض الكوكيز.');
+    }
+
+    // ============================================================
+    // BACK TO TOP
+    // ============================================================
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    });
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    loadTheme();
+    initCookies();
+    renderSocialIcons();
+    updateGenUI();
+</script>
+</body>
+</html>

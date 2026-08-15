@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سياسة الاستخدام | QR Pro Tools - شروط وأحكام استخدام المنصة</title>
+    <meta name="description" content="تعرف على سياسة الاستخدام وشروط وأحكام منصة QR Pro Tools. تتوافق مع سياسات جوجل وأدسنس لضمان تجربة آمنة وقانونية لجميع المستخدمين.">
+    <meta name="keywords" content="سياسة الاستخدام, شروط وأحكام, QR Pro Tools, اتفاقية المستخدم, سياسة جوجل, أدسنس, استخدام الموقع, مسؤولية, حقوق الملكية">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="سياسة الاستخدام | QR Pro Tools - شروط وأحكام استخدام المنصة">
+    <meta property="og:description" content="شروط وأحكام استخدام منصة QR Pro Tools المتوافقة مع سياسات جوجل وأدسنس.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qrprotools.com/terms">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="canonical" href="https://qrprotools.com/terms">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --primary-light: #818cf8;
+            --secondary: #64748b;
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.05);
+            --header-height: 60px;
+            --transition: 0.25s ease;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding-top: var(--header-height);
+            min-height: 100vh;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== HEADER ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--surface);
+            padding: 0 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            gap: 8px;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+        .brand i {
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            background: var(--bg);
+            padding: 4px;
+            border-radius: var(--radius);
+            flex-wrap: nowrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            transition: var(--transition);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .nav-btn:hover {
+            color: var(--text);
+        }
+        .nav-btn.active-nav {
+            background: var(--surface);
+            color: var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .icon-btn {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .icon-btn:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 820px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .terms-card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: fadeUp 0.5s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 1.8rem 0 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 28px;
+            text-align: center;
+        }
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 1.2rem 0 0.5rem;
+        }
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-terms {
+            text-align: center;
+            padding: 0.5rem 0 1.5rem;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .hero-terms .icon-large {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .hero-terms .badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        .last-updated {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== COMPLIANCE BADGE ===== */
+        .compliance-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .compliance-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        .compliance-badge i {
+            color: var(--success);
+            font-size: 1rem;
+        }
+
+        /* ===== LIST ===== */
+        .terms-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 1rem;
+        }
+        .terms-list li {
+            padding: 0.6rem 1rem;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            border-right: 3px solid var(--primary);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .terms-list li i {
+            color: var(--primary);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* ===== INFO BOX ===== */
+        .info-box {
+            background: var(--bg);
+            padding: 1.2rem 1.5rem;
+            border-radius: var(--radius);
+            border-right: 4px solid var(--primary);
+            margin: 1rem 0;
+        }
+        .info-box p {
+            margin: 0;
+        }
+        .info-box.warning {
+            border-right-color: var(--warning);
+        }
+        .info-box.warning i {
+            color: var(--warning);
+        }
+        .info-box.danger {
+            border-right-color: var(--danger);
+        }
+        .info-box.danger i {
+            color: var(--danger);
+        }
+
+        /* ===== TABLE ===== */
+        .terms-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+        .terms-table th,
+        .terms-table td {
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            text-align: right;
+        }
+        .terms-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+        }
+        .terms-table td {
+            color: var(--text-muted);
+        }
+        .terms-table tr:nth-child(even) {
+            background: var(--bg);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2rem auto 0.5rem;
+            padding: 1.2rem;
+            max-width: 820px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-copy {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 0.8rem 0 1.5rem;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* ===== COOKIE BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            color: var(--text);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 9999;
+            border-top: 3px solid var(--primary);
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cookie-banner p {
+            margin: 0;
+            flex: 1;
+            font-size: 0.9rem;
+            min-width: 200px;
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+        }
+        .cookie-banner .btn-sm {
+            width: auto;
+            padding: 8px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .cookie-banner .btn-primary-sm {
+            background: var(--primary);
+            color: white;
+        }
+        .cookie-banner .btn-primary-sm:hover {
+            background: var(--primary-dark);
+        }
+        .cookie-banner .btn-outline-sm {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .cookie-banner .btn-outline-sm:hover {
+            background: rgba(79, 70, 229, 0.06);
+        }
+        .cookie-banner .cookie-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== BACK TO TOP ===== */
+        #backToTop {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #backToTop:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            font-family: 'Cairo', sans-serif;
+        }
+        .toast.show {
+            opacity: 1;
+            bottom: 40px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        .text-center { text-align: center; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 0.8rem;
+                height: 56px;
+                gap: 6px;
+            }
+            .brand {
+                font-size: 0.95rem;
+            }
+            .brand i {
+                font-size: 1.1rem;
+            }
+            .nav-btn {
+                padding: 5px 10px;
+                font-size: 0.75rem;
+            }
+            .nav-links {
+                gap: 3px;
+                padding: 3px;
+            }
+            .icon-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+            }
+            .terms-card {
+                padding: 1.5rem;
+            }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.15rem; }
+            .compliance-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            .terms-table {
+                font-size: 0.8rem;
+            }
+            .terms-table th,
+            .terms-table td {
+                padding: 6px 8px;
+            }
+            .footer-links {
+                gap: 0.8rem;
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 0.8rem 1rem;
+            }
+            .cookie-banner .cookie-actions {
+                width: 100%;
+            }
+            .cookie-banner .btn-sm {
+                width: 100%;
+            }
+            #backToTop {
+                bottom: 80px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-btn {
+                padding: 4px 8px;
+                font-size: 0.7rem;
+            }
+            .brand {
+                font-size: 0.85rem;
+            }
+            .brand i {
+                font-size: 1rem;
+            }
+            .icon-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 0.7rem;
+            }
+            .terms-card {
+                padding: 1rem;
+            }
+            .hero-terms .icon-large {
+                font-size: 2.8rem;
+            }
+            h1 { font-size: 1.3rem; }
+            h2 { font-size: 1rem; }
+            .terms-list li {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="navbar">
+    <a href="index.html" class="brand">
+        <i class="fa-solid fa-qrcode"></i>
+        <span>QR Pro</span>
+    </a>
+    
+    <nav class="nav-links">
+        <a href="index.html" class="nav-btn">الرئيسية</a>
+        <a href="index.html#decoder" class="nav-btn">فحص</a>
+        <a href="index.html#generator" class="nav-btn">إنشاء</a>
+    </nav>
+
+    <div class="nav-controls">
+        <button onclick="toggleTheme()" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button onclick="toggleLang()" class="icon-btn" id="langToggle" aria-label="تبديل اللغة">EN</button>
+    </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<div class="container">
+
+    <div class="terms-card">
+
+        <!-- Hero -->
+        <div class="hero-terms">
+            <div class="icon-large">
+                <i class="fa-regular fa-file-contract"></i>
+            </div>
+            <h1>سياسة الاستخدام</h1>
+            <p style="font-size: 1.05rem; max-width: 650px; margin: 0 auto;">
+                شروط وأحكام استخدام منصة <span class="highlight">QR Pro Tools</span>. يرجى قراءة هذه السياسة بعناية قبل استخدام خدماتنا.
+            </p>
+            <span class="badge"><i class="fa-regular fa-check-circle"></i> متوافقة مع سياسات جوجل وأدسنس</span>
+            <div class="last-updated">
+                <i class="fa-regular fa-calendar"></i> آخر تحديث: <strong>15 أغسطس 2026</strong>
+            </div>
+        </div>
+
+        <!-- Compliance Badges -->
+        <div class="compliance-badges">
+            <span class="compliance-badge">
+                <i class="fa-regular fa-circle-check"></i> متوافق مع Google AdSense
+            </span>
+            <span class="compliance-badge">
+                <i class="fa-regular fa-circle-check"></i> متوافق مع سياسات جوجل
+            </span>
+            <span class="compliance-badge">
+                <i class="fa-regular fa-circle-check"></i> ملتزم بقوانين الخصوصية
+            </span>
+            <span class="compliance-badge">
+                <i class="fa-regular fa-circle-check"></i> آمن للمستخدمين
+            </span>
+        </div>
+
+        <!-- Introduction -->
+        <h2><i class="fa-regular fa-circle-info"></i> مقدمة</h2>
+        <p>
+            مرحباً بك في <span class="highlight">QR Pro Tools</span>. توضح هذه السياسة ("سياسة الاستخدام") الشروط والأحكام التي تنظم استخدامك لمنصتنا وخدماتنا. باستخدامك للمنصة، فإنك توافق على الالتزام بهذه الشروط والأحكام.
+        </p>
+        <p>
+            نوصي بقراءة هذه السياسة بعناية. إذا كنت لا توافق على أي من هذه الشروط، يرجى عدم استخدام منصتنا.
+        </p>
+
+        <!-- Acceptance of Terms -->
+        <h2><i class="fa-regular fa-handshake"></i> الموافقة على الشروط</h2>
+        <p>
+            باستخدامك لمنصة <span class="highlight">QR Pro Tools</span>، فإنك تقر بأنك قد قرأت وفهمت ووافقت على الالتزام بسياسة الاستخدام هذه وجميع القوانين واللوائح المعمول بها. إذا كنت تستخدم المنصة نيابة عن شركة أو كيان آخر، فإنك تضمن أن لديك السلطة لربط هذا الكيان بهذه الشروط.
+        </p>
+
+        <div class="info-box">
+            <p>
+                <i class="fa-regular fa-circle-exclamation" style="color: var(--primary);"></i>
+                <strong>ملاحظة مهمة:</strong> قد نقوم بتحديث هذه السياسة من وقت لآخر. سنقوم بإبلاغك بأي تغييرات جوهرية من خلال نشر السياسة المحدثة على هذه الصفحة.
+            </p>
+        </div>
+
+        <!-- Services Provided -->
+        <h2><i class="fa-regular fa-qrcode"></i> الخدمات المقدمة</h2>
+        <p>
+            تقدم منصة <span class="highlight">QR Pro Tools</span> الأدوات التالية مجاناً:
+        </p>
+        <ul class="terms-list">
+            <li>
+                <i class="fa-regular fa-plus"></i>
+                <div><strong>إنشاء رموز QR:</strong> أدوات لإنشاء رموز QR للروابط، النصوص، شبكات الواي فاي، جهات الاتصال، واتساب، والبريد الإلكتروني.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-camera"></i>
+                <div><strong>فحص رموز QR:</strong> أدوات لمسح وفحص رموز QR باستخدام الكاميرا أو رفع الصور.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-palette"></i>
+                <div><strong>تخصيص الرموز:</strong> إمكانية تغيير ألوان الرموز والخلفيات.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-download"></i>
+                <div><strong>تحميل الرموز:</strong> تحميل رموز QR بصيغة PNG عالية الجودة.</div>
+            </li>
+        </ul>
+
+        <!-- User Responsibilities -->
+        <h2><i class="fa-regular fa-user-check"></i> مسؤوليات المستخدم</h2>
+        <p>أنت توافق على استخدام المنصة وفقاً للقوانين واللوائح المعمول بها، وتتحمل المسؤولية الكاملة عن:</p>
+        <ul class="terms-list">
+            <li>
+                <i class="fa-regular fa-check"></i>
+                <div>استخدام المنصة للأغراض القانونية فقط.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-ban"></i>
+                <div>عدم استخدام المنصة لنشر محتوى غير قانوني أو ضار أو مسيء.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-copyright"></i>
+                <div>احترام حقوق الملكية الفكرية للآخرين.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-shield"></i>
+                <div>حماية حسابك وبياناتك الشخصية.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-envelope"></i>
+                <div>عدم إساءة استخدام نموذج الاتصال أو إرسال رسائل غير مرغوب فيها.</div>
+            </li>
+        </ul>
+
+        <div class="info-box warning">
+            <p>
+                <i class="fa-regular fa-triangle-exclamation"></i>
+                <strong>تحذير:</strong> أي استخدام غير قانوني أو غير مصرح به للمنصة قد يؤدي إلى إنهاء وصولك إلى الخدمات واتخاذ إجراءات قانونية.
+            </p>
+        </div>
+
+        <!-- Prohibited Activities -->
+        <h2><i class="fa-regular fa-ban"></i> الأنشطة المحظورة</h2>
+        <p>يحظر بشكل صارم القيام بأي من الأنشطة التالية على منصتنا:</p>
+        <ul class="terms-list">
+            <li>
+                <i class="fa-regular fa-skull"></i>
+                <div>استخدام المنصة لنشر محتوى غير قانوني أو إباحي أو عنيف.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-bug"></i>
+                <div>محاولة اختراق أو تعطيل أو تجاوز أنظمة الأمان في المنصة.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-robot"></i>
+                <div>استخدام برامج أو أدوات آلية للوصول إلى المنصة دون إذن.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-copyright"></i>
+                <div>انتهاك حقوق الملكية الفكرية للآخرين.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-user-slash"></i>
+                <div>انتحال شخصية الآخرين أو تقديم معلومات مضللة.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-bullhorn"></i>
+                <div>إرسال رسائل غير مرغوب فيها (سبام) عبر المنصة.</div>
+            </li>
+        </ul>
+
+        <!-- Intellectual Property -->
+        <h2><i class="fa-regular fa-copyright"></i> الملكية الفكرية</h2>
+        <p>
+            جميع المحتويات والمواد المتوفرة على منصة <span class="highlight">QR Pro Tools</span>، بما في ذلك النصوص والرسومات والشعارات والأيقونات والصور، هي ملك لـ <span class="highlight">QR Pro Tools</span> أو الجهات المرخصة، وتحميها قوانين حقوق النشر والملكية الفكرية.
+        </p>
+        <p>
+            يُمنح المستخدمون ترخيصاً محدوداً للاستخدام الشخصي غير التجاري للمنصة. لا يجوز نسخ أو توزيع أو تعديل أو إعادة نشر أي جزء من المنصة دون الحصول على موافقة خطية مسبقة.
+        </p>
+
+        <!-- Disclaimer of Warranties -->
+        <h2><i class="fa-regular fa-triangle-exclamation"></i> إخلاء المسؤولية</h2>
+        <p>
+            يتم تقديم منصة <span class="highlight">QR Pro Tools</span> "كما هي" و"كما هي متاحة" دون أي ضمانات من أي نوع، سواء كانت صريحة أو ضمنية.
+        </p>
+        <ul class="terms-list">
+            <li>
+                <i class="fa-regular fa-warning"></i>
+                <div>لا نضمن أن المنصة ستكون خالية من الأخطاء أو الانقطاعات.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-warning"></i>
+                <div>لا نضمن دقة أو اكتمال أو موثوقية أي محتوى يتم إنشاؤه باستخدام المنصة.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-warning"></i>
+                <div>أنت تتحمل المسؤولية الكاملة عن استخدامك للمنصة والمحتوى الذي تنشئه.</div>
+            </li>
+        </ul>
+
+        <div class="info-box danger">
+            <p>
+                <i class="fa-regular fa-circle-exclamation"></i>
+                <strong>تنبيه مهم:</strong> QR Pro Tools ليست مسؤولة عن أي خسائر أو أضرار ناتجة عن استخدام أو عدم القدرة على استخدام المنصة، بما في ذلك الأضرار المباشرة أو غير المباشرة أو العرضية.
+            </p>
+        </div>
+
+        <!-- Limitation of Liability -->
+        <h2><i class="fa-regular fa-scale-balanced"></i> تحديد المسؤولية</h2>
+        <p>
+            إلى أقصى حد يسمح به القانون، لن تكون <span class="highlight">QR Pro Tools</span> أو أي من موظفيها أو مديريها أو وكلائها مسؤولة عن أي أضرار مباشرة أو غير مباشرة أو عرضية أو خاصة أو تأديبية أو تبعية ناتجة عن:
+        </p>
+        <ul class="terms-list">
+            <li>
+                <i class="fa-regular fa-1"></i>
+                <div>استخدامك للمنصة أو عدم قدرتك على استخدامها.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-2"></i>
+                <div>أي محتوى يتم إنشاؤه أو فحصه باستخدام المنصة.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-3"></i>
+                <div>أي وصول غير مصرح به أو تعديل لبياناتك.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-4"></i>
+                <div>أي محتوى أو سلوك من أطراف ثالثة على المنصة.</div>
+            </li>
+        </ul>
+
+        <!-- Third-Party Links -->
+        <h2><i class="fa-regular fa-share-nodes"></i> روابط الطرف الثالث</h2>
+        <p>
+            قد تحتوي منصتنا على روابط إلى مواقع أو خدمات تابعة لأطراف ثالثة. نحن لا نتحكم في محتوى أو سياسات هذه المواقع ولا نتحمل أي مسؤولية عنها. ننصحك بقراءة سياسات الخصوصية وشروط الاستخدام الخاصة بتلك المواقع قبل استخدامها.
+        </p>
+
+        <!-- Termination -->
+        <h2><i class="fa-regular fa-circle-stop"></i> إنهاء الاستخدام</h2>
+        <p>
+            نحتفظ بالحق في إنهاء أو تعليق وصولك إلى المنصة في أي وقت، دون إشعار مسبق، إذا رأينا أنك انتهكت أي من شروط سياسة الاستخدام هذه. قد نقوم أيضاً بحظر عنوان IP الخاص بك إذا لزم الأمر لحماية المنصة والمستخدمين الآخرين.
+        </p>
+
+        <!-- Governing Law -->
+        <h2><i class="fa-regular fa-gavel"></i> القانون الحاكم</h2>
+        <p>
+            تخضع هذه السياسة وتفسر وفقاً لقوانين المملكة المغربية. تخضع أي نزاعات تنشأ عن أو تتعلق بهذه السياسة للاختصاص القضائي الحصري للمحاكم المغربية.
+        </p>
+
+        <!-- Google AdSense Compliance -->
+        <h2><i class="fa-regular fa-google"></i> التوافق مع جوجل أدسنس</h2>
+        <p>
+            تلتزم منصة <span class="highlight">QR Pro Tools</span> بسياسات جوجل أدسنس التالية:
+        </p>
+        <ul class="terms-list">
+            <li>
+                <i class="fa-regular fa-check-circle"></i>
+                <div><strong>محتوى ملائم:</strong> لا تحتوي المنصة على محتوى غير قانوني أو إباحي أو عنيف.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-check-circle"></i>
+                <div><strong>سياسة الخصوصية:</strong> لدينا سياسة خصوصية واضحة وشفافة توضح كيفية جمع واستخدام البيانات.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-check-circle"></i>
+                <div><strong>موافقة المستخدم:</strong> نطلب موافقة المستخدم على استخدام ملفات تعريف الارتباط (Cookies).</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-check-circle"></i>
+                <div><strong>إعلانات غير مضللة:</strong> لا تحتوي المنصة على إعلانات مضللة أو خادعة.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-check-circle"></i>
+                <div><strong>حماية البيانات:</strong> نلتزم بحماية بيانات المستخدمين وفقاً للقوانين المعمول بها.</div>
+            </li>
+            <li>
+                <i class="fa-regular fa-check-circle"></i>
+                <div><strong>سهولة الاستخدام:</strong> المنصة سهلة الاستخدام وتوفر تجربة إيجابية للمستخدمين.</div>
+            </li>
+        </ul>
+
+        <div class="info-box">
+            <p>
+                <i class="fa-regular fa-circle-check" style="color: var(--success);"></i>
+                <strong>التزامنا:</strong> نحن ملتزمون بالحفاظ على معايير جوجل أدسنس لضمان تجربة آمنة وقانونية لجميع المستخدمين.
+            </p>
+        </div>
+
+        <!-- Contact -->
+        <h2><i class="fa-regular fa-envelope"></i> اتصل بنا</h2>
+        <p>
+            إذا كان لديك أي أسئلة أو استفسارات حول سياسة الاستخدام هذه، لا تتردد في <a href="contact.html" style="color: var(--primary); font-weight: 700;">التواصل معنا</a> عبر نموذج الاتصال.
+        </p>
+
+        <!-- Agreement -->
+        <div style="background: var(--bg); padding: 1.2rem 1.5rem; border-radius: var(--radius); margin-top: 1.5rem; text-align: center;">
+            <p style="margin: 0; font-weight: 700;">
+                <i class="fa-regular fa-handshake" style="color: var(--primary);"></i>
+                باستخدامك لمنصة QR Pro Tools، فإنك توافق على سياسة الاستخدام هذه
+            </p>
+            <p style="margin: 0.3rem 0 0; font-size: 0.85rem; color: var(--text-muted);">
+                آخر تحديث: 15 أغسطس 2026
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer-links">
+    <a href="about.html"><i class="fa-regular fa-address-card"></i> من نحن</a>
+    <a href="contact.html"><i class="fa-regular fa-envelope"></i> اتصل بنا</a>
+    <a href="privacy.html"><i class="fa-regular fa-file-lines"></i> سياسة الخصوصية</a>
+    <a href="terms.html"><i class="fa-regular fa-file-contract"></i> سياسة الاستخدام</a>
+    <a href="#"><i class="fa-regular fa-sitemap"></i> خريطة الموقع</a>
+</div>
+<div class="footer-copy">
+    <small>© 2026 QR Pro Tools | تصميم وتطوير IMAD LIMRANI</small>
+</div>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div id="cookieBanner" class="cookie-banner" style="display: none;">
+    <p>
+        🍪 نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك. باستخدامك للموقع، فإنك توافق على
+        <a href="privacy.html" style="color: var(--primary); font-weight: 700;">سياسة الخصوصية</a>.
+    </p>
+    <div class="cookie-actions">
+        <button class="btn-sm btn-primary-sm" onclick="acceptCookies()">قبول</button>
+        <button class="btn-sm btn-outline-sm" onclick="rejectCookies()">رفض</button>
+    </div>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ===== TOAST ===== -->
+<div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">تم!</span>
+</div>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+    // ============================================================
+    // THEME
+    // ============================================================
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+        const icon = document.querySelector('#themeToggle i');
+        if (document.body.classList.contains('dark')) {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    }
+
+    function loadTheme() {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+        }
+        updateThemeIcon();
+    }
+
+    // ============================================================
+    // LANGUAGE
+    // ============================================================
+    let currentLang = 'ar';
+
+    function toggleLang() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        document.getElementById('langToggle').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+    }
+
+    // ============================================================
+    // COOKIES
+    // ============================================================
+    function initCookies() {
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookieBanner').style.display = 'flex';
+        }
+    }
+
+    function acceptCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookieBanner').style.display = 'none';
+        showToast('✅ تم قبول الكوكيز!');
+    }
+
+    function rejectCookies() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        document.getElementById('cookieBanner').style.display = 'none';
+        showToast('❌ تم رفض الكوكيز.');
+    }
+
+    // ============================================================
+    // TOAST
+    // ============================================================
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        const tm = document.getElementById('toastMsg');
+        tm.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(t._timeout);
+        t._timeout = setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ============================================================
+    // BACK TO TOP
+    // ============================================================
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    });
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    loadTheme();
+    initCookies();
+</script>
+
+</body>
+</html>

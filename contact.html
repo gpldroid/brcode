@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>اتصل بنا | QR Pro Tools - تواصل مع فريق الدعم</title>
+    <meta name="description" content="تواصل مع فريق QR Pro Tools عبر نموذج الاتصال أو عبر واتساب وتيليجرام. نرحب بأسئلتك واستفساراتك حول أدوات إنشاء وفحص رموز QR.">
+    <meta name="keywords" content="اتصل بنا, تواصل معنا, QR Pro Tools, دعم فني, استفسارات, واتساب, تيليجرام, إنشاء رمز QR, فحص رمز QR">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="اتصل بنا | QR Pro Tools - تواصل مع فريق الدعم">
+    <meta property="og:description" content="تواصل مع فريق QR Pro Tools عبر نموذج الاتصال أو عبر واتساب وتيليجرام.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qrprotools.com/contact">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="canonical" href="https://qrprotools.com/contact">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --primary-light: #818cf8;
+            --secondary: #64748b;
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --text: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.05);
+            --header-height: 60px;
+            --transition: 0.25s ease;
+            --whatsapp: #25D366;
+            --telegram: #0088cc;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding-top: var(--header-height);
+            min-height: 100vh;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== HEADER ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--surface);
+            padding: 0 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            gap: 8px;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+        .brand i {
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            background: var(--bg);
+            padding: 4px;
+            border-radius: var(--radius);
+            flex-wrap: nowrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            transition: var(--transition);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .nav-btn:hover {
+            color: var(--text);
+        }
+        .nav-btn.active-nav {
+            background: var(--surface);
+            color: var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .icon-btn {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .icon-btn:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 720px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .contact-card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: fadeUp 0.5s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 1.5rem 0 0.8rem;
+        }
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-contact {
+            text-align: center;
+            padding: 0.5rem 0 1.5rem;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .hero-contact .icon-large {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .hero-contact .badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== FORM ===== */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            display: block;
+        }
+        label .required {
+            color: var(--danger);
+            margin-right: 3px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            transition: var(--transition);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--surface);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+        input.error, textarea.error {
+            border-color: var(--danger);
+        }
+        .error-msg {
+            color: var(--danger);
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+        }
+        .error-msg.show {
+            display: block;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            width: 100%;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== SOCIAL BUTTONS ===== */
+        .social-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border);
+            text-align: center;
+        }
+        .social-section h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        .social-section p {
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+        }
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            color: white;
+            min-width: 160px;
+        }
+        .social-btn i {
+            font-size: 1.4rem;
+        }
+        .social-btn.whatsapp {
+            background: var(--whatsapp);
+        }
+        .social-btn.whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+        .social-btn.telegram {
+            background: var(--telegram);
+        }
+        .social-btn.telegram:hover {
+            background: #006fa8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.3);
+        }
+
+        /* ===== SUCCESS MESSAGE ===== */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg);
+            border-radius: var(--radius);
+            border: 2px solid var(--success);
+        }
+        .success-message.show {
+            display: block;
+            animation: fadeUp 0.5s ease;
+        }
+        .success-message i {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+        .success-message h3 {
+            color: var(--success);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2rem auto 0.5rem;
+            padding: 1.2rem;
+            max-width: 720px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-copy {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 0.8rem 0 1.5rem;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* ===== COOKIE BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            color: var(--text);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 9999;
+            border-top: 3px solid var(--primary);
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cookie-banner p {
+            margin: 0;
+            flex: 1;
+            font-size: 0.9rem;
+            min-width: 200px;
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+        }
+        .cookie-banner .btn-sm {
+            width: auto;
+            padding: 8px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .cookie-banner .btn-primary-sm {
+            background: var(--primary);
+            color: white;
+        }
+        .cookie-banner .btn-primary-sm:hover {
+            background: var(--primary-dark);
+        }
+        .cookie-banner .btn-outline-sm {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .cookie-banner .btn-outline-sm:hover {
+            background: rgba(79, 70, 229, 0.06);
+        }
+        .cookie-banner .cookie-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== BACK TO TOP ===== */
+        #backToTop {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #backToTop:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            font-family: 'Cairo', sans-serif;
+        }
+        .toast.show {
+            opacity: 1;
+            bottom: 40px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        .text-center { text-align: center; }
+
+        /* ===== SPINNER ===== */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        .spinner.show {
+            display: inline-block;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 0.8rem;
+                height: 56px;
+                gap: 6px;
+            }
+            .brand {
+                font-size: 0.95rem;
+            }
+            .brand i {
+                font-size: 1.1rem;
+            }
+            .nav-btn {
+                padding: 5px 10px;
+                font-size: 0.75rem;
+            }
+            .nav-links {
+                gap: 3px;
+                padding: 3px;
+            }
+            .icon-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+            }
+            .contact-card {
+                padding: 1.5rem;
+            }
+            .social-btn {
+                min-width: 140px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.2rem; }
+            .footer-links {
+                gap: 0.8rem;
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 0.8rem 1rem;
+            }
+            .cookie-banner .cookie-actions {
+                width: 100%;
+            }
+            .cookie-banner .btn-sm {
+                width: 100%;
+            }
+            #backToTop {
+                bottom: 80px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-btn {
+                padding: 4px 8px;
+                font-size: 0.7rem;
+            }
+            .brand {
+                font-size: 0.85rem;
+            }
+            .brand i {
+                font-size: 1rem;
+            }
+            .icon-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 0.7rem;
+            }
+            .contact-card {
+                padding: 1rem;
+            }
+            .hero-contact .icon-large {
+                font-size: 2.8rem;
+            }
+            h1 { font-size: 1.3rem; }
+            .social-btn {
+                min-width: 100%;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="navbar">
+    <a href="index.html" class="brand">
+        <i class="fa-solid fa-qrcode"></i>
+        <span>QR Pro</span>
+    </a>
+    
+    <nav class="nav-links">
+        <a href="index.html" class="nav-btn">الرئيسية</a>
+        <a href="index.html#decoder" class="nav-btn">فحص</a>
+        <a href="index.html#generator" class="nav-btn">إنشاء</a>
+    </nav>
+
+    <div class="nav-controls">
+        <button onclick="toggleTheme()" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button onclick="toggleLang()" class="icon-btn" id="langToggle" aria-label="تبديل اللغة">EN</button>
+    </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<div class="container">
+
+    <div class="contact-card">
+
+        <!-- Hero -->
+        <div class="hero-contact">
+            <div class="icon-large">
+                <i class="fa-regular fa-envelope"></i>
+            </div>
+            <h1>اتصل بنا</h1>
+            <p style="font-size: 1.05rem; max-width: 500px; margin: 0 auto;">
+                نحن هنا لمساعدتك! تواصل مع فريق <span class="highlight">QR Pro Tools</span> عبر النموذج أدناه أو عبر وسائل التواصل الاجتماعي.
+            </p>
+            <span class="badge"><i class="fa-regular fa-clock"></i> الرد خلال 24 ساعة</span>
+        </div>
+
+        <!-- Contact Form -->
+        <h2><i class="fa-regular fa-pen-to-square" style="color: var(--primary);"></i> أرسل رسالتك</h2>
+        <p>يسعدنا استقبال استفساراتك واقتراحاتك، وسنقوم بالرد عليك في أقرب وقت.</p>
+
+        <form id="contactForm" onsubmit="return handleSubmit(event)">
+            <div class="form-group">
+                <label for="fullName">الاسم الكامل <span class="required">*</span></label>
+                <input type="text" id="fullName" placeholder="أدخل اسمك الكامل" required>
+                <div class="error-msg" id="nameError">الرجاء إدخال الاسم الكامل</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني <span class="required">*</span></label>
+                <input type="email" id="email" placeholder="example@domain.com" required>
+                <div class="error-msg" id="emailError">الرجاء إدخال بريد إلكتروني صحيح</div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">الرسالة <span class="required">*</span></label>
+                <textarea id="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+                <div class="error-msg" id="messageError">الرجاء كتابة رسالتك</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+                <span id="btnText"><i class="fa-regular fa-paper-plane"></i> إرسال الرسالة</span>
+                <span class="spinner" id="btnSpinner"></span>
+            </button>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            <i class="fa-regular fa-circle-check"></i>
+            <h3>تم إرسال رسالتك بنجاح!</h3>
+            <p>شكراً لتواصلك معنا. سنقوم بالرد عليك في أقرب وقت ممكن.</p>
+            <button onclick="resetForm()" class="btn btn-primary" style="margin-top: 1rem; width: auto; padding: 10px 30px;">
+                <i class="fa-regular fa-pen-to-square"></i> إرسال رسالة أخرى
+            </button>
+        </div>
+
+        <!-- Social Section -->
+        <div class="social-section">
+            <h3><i class="fa-regular fa-comments" style="color: var(--primary);"></i> تواصل معنا مباشرة</h3>
+            <p>يمكنك التواصل مع فريق الدعم عبر واتساب أو تيليجرام للحصول على رد فوري.</p>
+            <div class="social-buttons">
+                <a href="https://wa.me/212640059730" target="_blank" class="social-btn whatsapp" aria-label="تواصل عبر واتساب">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    واتساب
+                </a>
+                <a href="https://t.me/+212640059730" target="_blank" class="social-btn telegram" aria-label="تواصل عبر تيليجرام">
+                    <i class="fa-brands fa-telegram"></i>
+                    تيليجرام
+                </a>
+            </div>
+            <p style="font-size: 0.85rem; margin-top: 0.8rem; color: var(--text-muted);">
+                <i class="fa-regular fa-clock"></i> متوفرون للرد من الأحد إلى الخميس (9:00 صباحاً - 6:00 مساءً)
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer-links">
+    <a href="about.html"><i class="fa-regular fa-address-card"></i> من نحن</a>
+    <a href="contact.html"><i class="fa-regular fa-envelope"></i> اتصل بنا</a>
+    <a href="#"><i class="fa-regular fa-file-lines"></i> سياسة الخصوصية</a>
+    <a href="#"><i class="fa-regular fa-file-contract"></i> سياسة الاستخدام</a>
+    <a href="#"><i class="fa-regular fa-sitemap"></i> خريطة الموقع</a>
+</div>
+<div class="footer-copy">
+    <small>© 2026 QR Pro Tools | تصميم وتطوير IMAD LIMRANI</small>
+</div>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div id="cookieBanner" class="cookie-banner" style="display: none;">
+    <p>
+        🍪 نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك. باستخدامك للموقع، فإنك توافق على
+        <a href="#" style="color: var(--primary); font-weight: 700;">سياسة الخصوصية</a>.
+    </p>
+    <div class="cookie-actions">
+        <button class="btn-sm btn-primary-sm" onclick="acceptCookies()">قبول</button>
+        <button class="btn-sm btn-outline-sm" onclick="rejectCookies()">رفض</button>
+    </div>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ===== TOAST ===== -->
+<div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">تم!</span>
+</div>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+    // ============================================================
+    // THEME
+    // ============================================================
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+        const icon = document.querySelector('#themeToggle i');
+        if (document.body.classList.contains('dark')) {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    }
+
+    function loadTheme() {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+        }
+        updateThemeIcon();
+    }
+
+    // ============================================================
+    // LANGUAGE
+    // ============================================================
+    let currentLang = 'ar';
+
+    function toggleLang() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        document.getElementById('langToggle').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+    }
+
+    // ============================================================
+    // FORM HANDLING
+    // ============================================================
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('fullName');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const spinner = document.getElementById('btnSpinner');
+        
+        let isValid = true;
+
+        // Validate Name
+        if (name.value.trim().length < 3) {
+            name.classList.add('error');
+            document.getElementById('nameError').classList.add('show');
+            isValid = false;
+        } else {
+            name.classList.remove('error');
+            document.getElementById('nameError').classList.remove('show');
+        }
+
+        // Validate Email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value.trim())) {
+            email.classList.add('error');
+            document.getElementById('emailError').classList.add('show');
+            isValid = false;
+        } else {
+            email.classList.remove('error');
+            document.getElementById('emailError').classList.remove('show');
+        }
+
+        // Validate Message
+        if (message.value.trim().length < 10) {
+            message.classList.add('error');
+            document.getElementById('messageError').classList.add('show');
+            isValid = false;
+        } else {
+            message.classList.remove('error');
+            document.getElementById('messageError').classList.remove('show');
+        }
+
+        if (!isValid) {
+            showToast('الرجاء تصحيح الأخطاء في النموذج', 'error');
+            return false;
+        }
+
+        // Simulate sending
+        submitBtn.disabled = true;
+        btnText.textContent = 'جاري الإرسال...';
+        spinner.classList.add('show');
+
+        setTimeout(() => {
+            submitBtn.disabled = false;
+            btnText.innerHTML = '<i class="fa-regular fa-paper-plane"></i> إرسال الرسالة';
+            spinner.classList.remove('show');
+            
+            // Hide form, show success
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+            showToast('✅ تم إرسال رسالتك بنجاح!');
+        }, 2000);
+
+        return false;
+    }
+
+    function resetForm() {
+        document.getElementById('contactForm').reset();
+        document.getElementById('contactForm').style.display = 'block';
+        document.getElementById('successMessage').classList.remove('show');
+        
+        // Remove error states
+        document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+        document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('show'));
+        
+        window.scrollTo({ top: document.querySelector('.contact-card').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    // ============================================================
+    // COOKIES
+    // ============================================================
+    function initCookies() {
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookieBanner').style.display = 'flex';
+        }
+    }
+
+    function acceptCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookieBanner').style.display = 'none';
+        showToast('✅ تم قبول الكوكيز!');
+    }
+
+    function rejectCookies() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        document.getElementById('cookieBanner').style.display = 'none';
+        showToast('❌ تم رفض الكوكيز.');
+    }
+
+    // ============================================================
+    // TOAST
+    // ============================================================
+    function showToast(msg, type = 'success') {
+        const t = document.getElementById('toast');
+        const tm = document.getElementById('toastMsg');
+        t.style.background = type === 'error' ? '#ef4444' : '#1e293b';
+        tm.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(t._timeout);
+        t._timeout = setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    // ============================================================
+    // BACK TO TOP
+    // ============================================================
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    });
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    loadTheme();
+    initCookies();
+</script>
+
+</body>
+</html>
