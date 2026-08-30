@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # خريطة الموقع
-Sitemap: https://tfiles.free.nf/sitemap.xml
+Sitemap: https://brcode.online/sitemap.xml
 
 # منع فهرسة الملفات غير المهمة فقط
 Disallow: /*.css$
