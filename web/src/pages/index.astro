@@ -1,4 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import QRGenerator from '../components/QRGenerator.astro';
 ---
-<BaseLayout title="BRCode — QR Code Generator"><section class="hero"><div class="container"><h1>BRCode QR Code Generator</h1><p>Generate QR codes directly in your browser.</p></div></section><section class="container"><div class="card qr-grid"><div><label for="qr-input">Text or URL</label><textarea id="qr-input" rows="9" placeholder="https://example.com"></textarea><div class="actions"><button id="generate">Generate QR</button><button id="download">Download</button></div></div><div><div id="qr-preview" class="preview">Your QR code will appear here.</div></div></div></section><script>const i=document.querySelector('#qr-input'),p=document.querySelector('#qr-preview');document.querySelector('#generate').onclick=()=>{const v=i.value.trim();if(!v){p.textContent='Enter text or a URL first.';return}const x=document.createElement('img');x.alt='Generated QR code';x.width=256;x.height=256;x.src='https://api.qrserver.com/v1/create-qr-code/?size=256x256&data='+encodeURIComponent(v);p.replaceChildren(x)};document.querySelector('#download').onclick=()=>{const x=p.querySelector('img');if(!x)return;const a=document.createElement('a');a.href=x.src;a.download='brcode-qr.png';a.target='_blank';a.click()};</script></BaseLayout>
+<BaseLayout title="BRCode — Free QR Code Generator" description="Create and download QR codes locally in your browser with BRCode.">
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">BRCode V2</span>
+      <h1>Fast, private QR codes</h1>
+      <p>Generate QR codes directly on your device. No QR API is required.</p>
+    </div>
+  </section>
+  <section class="container">
+    <QRGenerator />
+  </section>
+  <section class="container feature-grid" aria-label="BRCode features">
+    <article class="card"><h2>Private by design</h2><p class="muted">QR content is processed locally in your browser.</p></article>
+    <article class="card"><h2>PNG export</h2><p class="muted">Download a high-resolution PNG ready to share or print.</p></article>
+    <article class="card"><h2>GitHub Pages</h2><p class="muted">A static architecture with no required web server.</p></article>
+  </section>
+</BaseLayout>
