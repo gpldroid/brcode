@@ -33,11 +33,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: brcode-debug-apk
-          path: android/app/build/outputs/apk/debug/*.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
   release:
-    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/rebuild/v2'
+    # Release signing is manual only; debug builds must remain usable
+    # without any Firebase, AdMob, keystore, or Play Store setup.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     needs: build
     defaults:
