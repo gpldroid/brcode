@@ -13,9 +13,21 @@ android {
     targetSdk = 35
     versionCode = 1
     versionName = "2.0.0"
-    manifestPlaceholders["ADMOB_APP_ID"] =
-      project.findProperty("ADMOB_APP_ID")?.toString()
-        ?: "ca-app-pub-3940256099942544~3347511713"
+  }
+  signingConfigs {
+    create("release") {
+      val p = project
+      storeFile = p.findProperty("RELEASE_STORE_FILE")?.toString()?.let(::file)
+      storePassword = p.findProperty("RELEASE_STORE_PASSWORD")?.toString()
+      keyAlias = p.findProperty("RELEASE_KEY_ALIAS")?.toString()
+      keyPassword = p.findProperty("RELEASE_KEY_PASSWORD")?.toString()
+    }
+  }
+  buildTypes {
+    getByName("release") {
+      isMinifyEnabled = false
+      signingConfig = signingConfigs.getByName("release")
+    }
   }
   buildFeatures { compose = true }
   packaging { resources.excludes += "/META-INF/{AL2.0,LGPL2.1}" }
@@ -32,8 +44,5 @@ dependencies {
   implementation("androidx.compose.material3:material3")
   implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
   implementation("com.google.zxing:core:3.5.3")
-  implementation("com.google.android.gms:play-services-ads:23.6.0")
-  implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
-  implementation("com.google.firebase:firebase-analytics")
   debugImplementation("androidx.compose.ui:ui-tooling")
 }
