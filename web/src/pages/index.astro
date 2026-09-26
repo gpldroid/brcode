@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="BRCode — QR Code Generator" description="Create QR codes directly in your browser.">
+<section class="hero"><div class="container"><h1>BRCode QR Code Generator</h1><p>Generate QR codes directly in your browser.</p></div></section>
+<section class="container"><div class="card qr-grid"><div><label for="qr-input">Text or URL</label><textarea id="qr-input" rows="9" placeholder="https://example.com"></textarea><div class="actions"><button id="generate">Generate QR</button><button id="download">Download</button></div></div><div><div id="qr-preview" class="preview">Your QR code will appear here.</div></div></div></section>
+<script>
+const input=document.querySelector('#qr-input'),preview=document.querySelector('#qr-preview');
+document.querySelector('#generate').onclick=()=>{const v=input.value.trim();if(!v){preview.textContent='Enter text or a URL first.';return;}const img=document.createElement('img');img.alt='Generated QR code';img.width=256;img.height=256;img.src='https://api.qrserver.com/v1/create-qr-code/?size=256x256&data='+encodeURIComponent(v);preview.replaceChildren(img)};
+document.querySelector('#download').onclick=()=>{const img=preview.querySelector('img');if(!img)return;const a=document.createElement('a');a.href=img.src;a.download='brcode-qr.png';a.target='_blank';a.click()};
+</script></BaseLayout>
