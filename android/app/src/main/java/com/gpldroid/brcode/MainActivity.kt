@@ -19,14 +19,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.unit.dp
-import com.google.android.gms.ads.MobileAds
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    MobileAds.initialize(this)
     setContent {
       MaterialTheme { Surface(modifier = Modifier.fillMaxSize()) { QRScreen() } }
     }
