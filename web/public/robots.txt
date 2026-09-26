@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# GitHub Pages deployment
+# The production sitemap URL will be generated for the GitHub Pages repository path.
