@@ -1,1 +1,13 @@
-{"name":"BRCode","short_name":"BRCode","start_url":"/brcode/","display":"standalone","description":"BRCode QR Code tools","icons":[]}
+{
+  "name": "BRCode",
+  "short_name": "BRCode",
+  "start_url": "/brcode/",
+  "scope": "/brcode/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#111827",
+  "description": "BRCode QR Code tools",
+  "icons": [
+    {"src": "/brcode/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
