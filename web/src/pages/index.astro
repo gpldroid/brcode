@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import QRGenerator from '../components/QRGenerator.astro';
+---
+<BaseLayout title="BRCode — Free QR Code Generator" description="Create and download QR codes locally in your browser with BRCode.">
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">BRCode V2</span>
+      <h1>Fast, private QR codes</h1>
+      <p>Generate QR codes directly on your device. No QR API is required.</p>
+    </div>
+  </section>
+  <section class="container">
+    <QRGenerator />
+  </section>
+  <section class="container feature-grid" aria-label="BRCode features">
+    <article class="card"><h2>Private by design</h2><p class="muted">QR content is processed locally in your browser.</p></article>
+    <article class="card"><h2>PNG export</h2><p class="muted">Download a high-resolution PNG ready to share or print.</p></article>
+    <article class="card"><h2>GitHub Pages</h2><p class="muted">A static architecture with no required web server.</p></article>
+  </section>
+</BaseLayout>

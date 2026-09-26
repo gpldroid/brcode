@@ -1,0 +1,24 @@
+<section class="qr-tool card" aria-labelledby="qr-heading">
+  <div class="qr-form">
+    <div>
+      <h2 id="qr-heading">Create a QR code</h2>
+      <p class="muted">Generate it locally. Your content is not sent to a QR service.</p>
+    </div>
+    <label for="qr-input">Text or URL</label>
+    <textarea id="qr-input" rows="8" placeholder="https://example.com" autocomplete="off"></textarea>
+    <div class="actions">
+      <button id="qr-generate" type="button">Generate QR</button>
+      <button id="qr-download" type="button" disabled>Download PNG</button>
+      <button id="qr-clear" type="button" class="secondary">Clear</button>
+    </div>
+    <p id="qr-status" class="status" data-state="ready" aria-live="polite">Ready</p>
+  </div>
+  <div class="qr-preview">
+    <div class="qr-canvas-wrap">
+      <canvas id="qr-canvas" width="320" height="320" aria-label="Generated QR code"></canvas>
+    </div>
+  </div>
+</section>
+<script>
+  import '../qr/qr-generator.ts';
+</script>

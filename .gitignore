@@ -1,0 +1,27 @@
+# IDE
+.idea/
+*.iml
+
+# Android
+.gradle/
+local.properties
+/build/
+**/build/
+*.jks
+*.keystore
+
+# Web
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+
+# Firebase / secrets
+service-account*.json
+google-services.json
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+const { title='BRCode', description='BRCode QR Code tools' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="theme-color" content="#111827">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <link rel="icon" href={base + 'icon.svg'} type="image/svg+xml">
+  <link rel="manifest" href={base + 'manifest.webmanifest'}>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href={base}>BRCode</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href={base+'about/'}>About</a>
+        <a href={base+'contact/'}>Contact</a>
+        <a href={base+'privacy/'}>Privacy</a>
+        <a href={base+'terms/'}>Terms</a>
+      </nav>
+    </div>
+  </header>
+  <main><slot /></main>
+  <footer class="site-footer">
+    <div class="container">© {new Date().getFullYear()} BRCode · GitHub Pages</div>
+  </footer>
+</body>
+</html>
