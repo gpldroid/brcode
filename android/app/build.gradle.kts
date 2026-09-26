@@ -7,6 +7,7 @@ plugins {
 android {
   namespace = "com.gpldroid.brcode"
   compileSdk = 35
+
   defaultConfig {
     applicationId = "com.gpldroid.brcode"
     minSdk = 24
@@ -14,6 +15,16 @@ android {
     versionCode = 1
     versionName = "2.0.0"
   }
+
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
+
+  kotlinOptions {
+    jvmTarget = "17"
+  }
+
   signingConfigs {
     create("release") {
       val p = project
@@ -23,12 +34,14 @@ android {
       keyPassword = p.findProperty("RELEASE_KEY_PASSWORD")?.toString()
     }
   }
+
   buildTypes {
     getByName("release") {
       isMinifyEnabled = false
       signingConfig = signingConfigs.getByName("release")
     }
   }
+
   buildFeatures { compose = true }
   packaging { resources.excludes += "/META-INF/{AL2.0,LGPL2.1}" }
 }
